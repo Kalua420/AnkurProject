@@ -405,9 +405,6 @@ if ($file_ext == 'pdf') {
                     <a href="index.php" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i> Back to Dashboard
                     </a>
-                    <a href="download.php?id=<?php echo $id; ?>&type=<?php echo $type; ?>" class="btn btn-success">
-                        <i class="fas fa-download"></i> Download
-                    </a>
                     <button onclick="window.print()" class="btn btn-primary">
                         <i class="fas fa-print"></i> Print
                     </button>
