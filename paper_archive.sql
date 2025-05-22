@@ -1,31 +1,14 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: May 22, 2025 at 10:25 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+CREATE DATABASE IF NOT EXISTS `paper_archive`;
+USE `paper_archive`;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `paper_archive`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `papers`
---
+SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT;
+SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS;
+SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION;
+SET NAMES utf8mb4;
 
 CREATE TABLE `papers` (
   `id` int(11) NOT NULL,
@@ -41,12 +24,6 @@ CREATE TABLE `papers` (
   `is_approved` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `question_papers`
---
-
 CREATE TABLE `question_papers` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -61,28 +38,14 @@ CREATE TABLE `question_papers` (
   `download_count` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `question_papers`
---
-
 INSERT INTO `question_papers` (`id`, `title`, `department`, `course_code`, `paper_year`, `semester`, `subject`, `credit`, `file_path`, `uploaded_at`, `download_count`) VALUES
 (10, 'computer application', ' Computer Science', ' BCA-CC-T4-202', 2025, 'Semester 4', ' Database management system', 4, '../uploads/question_papers/1746804192_gegdjg.pdf', '2025-05-09 15:23:12', 0),
 (12, 'ugfgf', 'gfdvdg', 'vdhvd', 2025, 'Semester 4', 'vdvdgv', 3, '../uploads/question_papers/1746952791_DBMS 2.pdf', '2025-05-11 08:39:51', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `semesters`
---
 
 CREATE TABLE `semesters` (
   `id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `semesters`
---
 
 INSERT INTO `semesters` (`id`, `name`) VALUES
 (1, 'Semester 1'),
@@ -93,12 +56,6 @@ INSERT INTO `semesters` (`id`, `name`) VALUES
 (6, 'Semester 6'),
 (7, 'Semester 7'),
 (8, 'Semester 8');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
@@ -116,13 +73,8 @@ CREATE TABLE `users` (
   `rejection_reason` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `users`
---
-
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `remember_token`, `token_expires`, `reset_token`, `reset_expires`, `created_at`, `updated_at`, `role`, `status`, `rejection_reason`) VALUES
 (1, 'Tutu', 'tutu@admin.com', '$2y$10$dKwYFRwN7mBmF5iPSBjpfeDZmla9toIOloMFxyeHioarrlG5fvT52', '1aa3520cf3a653e5dfe64497ebcd3e5368105231e203f49b0c90a94478c2dfe3', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'admin', 'approved', NULL),
-(2, 'Tutu', 'tutu@teacher.com', '$2y$10$E3cIABYdoAhSEpt0USZ8auCdJ9GGGZl0xChBNrcLOI8A832TizGG', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'teacher', 'approved', NULL),
 (3, 'Tutu', 'tutu@student.com', '$2y$10$QtXvSRWE91a5lmZT48XOIO7GUk3lFjwrjZ6l8L21nE3fTH1FgK95a', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'student', 'approved', NULL),
 (4, 'Ankur Boruah', 'Ankur@student.com', '$2y$10$DwQUuFv31CSA4.l6.SbcBuEWnytJLnRZUZtvj3fNGInKXWg3LZg6', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'student', 'approved', NULL),
 (5, 'Dulen boruah', 'dulen@teacher.com', '$2y$10$6xpsdhen7vukgurEz7p8uzL09kUvuwEub55ltarvrIbQ7gV45fSS', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'teacher', 'approved', NULL),
@@ -134,47 +86,26 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `remember_token`, `t
 (11, 'ankur', 'ankur@gmail.com', '$2y$10$aNX3ypamM0sQ8fBQC3em.7Ub5pjiJ6EbUa1yka4ApQVn66dINzG', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'teacher', 'approved', NULL),
 (12, 'jk', 'jka@gmail.com', '$2y$10$Ps5bJhmx0tQHIIQy1BWpn.R7flr.7BW/r7KYU5cn5UPI1BSWpuVR6', NULL, NULL, NULL, NULL, '2025-05-09 17:15:14', '2025-05-09 15:15:14', 'student', 'approved', NULL),
 (13, 'tarangini konwar', 'konwartarangini@gmail.com', '$2y$10$vKi/7CbDT6sZWZrfgE9kVukR7W8Sw52NzuDqummUqtHxiJ0aqIrRa', '40422d34bf5d95383340f6607f3f18e9f6527736e9ef57b7de22162e7ff6e110', '2025-06-08 17:17:43', NULL, NULL, '2025-05-09 17:16:57', '2025-05-09 15:17:43', 'admin', 'approved', NULL),
-(14, 'singham', 'hi@gmail.com', '$2y$10$OAbkOSPZEQbC/7LWHJag5e1JslypoVgMs9yd9U/2/02G.optko1s6', NULL, NULL, NULL, NULL, '2025-05-09 17:19:21', '2025-05-09 15:19:50', 'teacher', 'approved', NULL);
+(14, 'singham', 'hi@gmail.com', '$2y$10$OAbkOSPZEQbC/7LWHJag5e1JslypoVgMs9yd9U/2/02G.optko1s6', NULL, NULL, NULL, NULL, '2025-05-09 17:19:21', '2025-05-09 15:19:50', 'teacher', 'approved', NULL),
+(15, 'Tutu', 'tutu@teacher.com', '$2y$10$LHUy/QW/1gvjk/pEtDAr1OtsQs83FPgdB4z.CRhqv/hv3NhgWMiGW', NULL, NULL, NULL, NULL, '2025-05-22 15:39:36', '2025-05-22 13:40:09', 'teacher', 'approved', NULL);
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `question_papers`
---
 ALTER TABLE `question_papers`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `semesters`
---
 ALTER TABLE `semesters`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `users`
---
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `question_papers`
---
 ALTER TABLE `question_papers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
---
--- AUTO_INCREMENT for table `users`
---
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT;
+SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS;
+SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION;
